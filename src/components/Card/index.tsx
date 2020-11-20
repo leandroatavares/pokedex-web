@@ -1,17 +1,17 @@
 import React from 'react';
-import {Pokemon} from '../../models/Pokemon';
+import { Pokemon } from '../../models/Pokemon';
 
-import './Card.module.css';
+import './styles.css';
 
 interface CardProps {
   pokemon: Pokemon
 }
 
-const Card:React.FC<CardProps> = ({pokemon}) => {
+const Card:React.FC<CardProps> = ({ pokemon }) => {
   return (
     <div className="card-wrapper">
       <div className="card-image-section">
-        <img src={pokemon.img}alt="pokemon image"/>
+        <img src={pokemon.img} alt="pokemon"/>
       </div>
       <div className="card-identfication-section">
         <p className="card-pokemon-name">{pokemon.name}</p>
