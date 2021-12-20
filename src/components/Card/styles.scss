@@ -1,54 +1,53 @@
 #card {
-  margin: 35px;
-
-  position: relative;
-  width: 200px;
   display: flex;
   flex-direction: column;
   border: 1px solid #dfdfdf;
   border-radius: 4px;
   box-shadow: 0 2px 12px #ddd;
-  padding: 22px 6px 12px;
-  gap: 8px;
-  max-height: 300px;
-  height: 300px;
+  padding: 6px 10px;
+  width: 300px;
 
-  background-color: aqua;
-  
   .identification {
-    position: absolute;
     width: 100%;
     display: flex;
-    justify-content: flex-start;
-    top: -3px;
-    left: -3px;
+    justify-content: space-between;
     align-items: center;
-    gap: 14px;
-    border-top-left-radius: 50%;
-    border-bottom-left-radius: 50%;
+    font: 20px 'Overpass', sans-serif;
+    font-weight: 800;
+    padding: 0 10px;
     .number {
-      background-color: #fff;
-      border: 2px solid red;
-      color: red;
-      font-size: 20px;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      text-align: center;
+
     }
     .name {
-      font-size: 20px;
+
     }
   }
 
-  img {
-    object-fit: cover;
-    width: 100%;
+  .data-wrapper {
+    display: flex;
+    gap: 5px;
+
+    height: 100%;
+    .image-box {
+      flex: 4;
+      height: 110px;
+      padding: 10px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    .stats-box {
+      flex: 7;
+      font: 14px 'Overpass', sans-serif;
+      padding: 10px;
+    }
   }
 
   .types {
     display: flex;
-    gap: 5px;
+    justify-content: space-between;
   }
   .types > .type-tag {
     display: flex;
@@ -58,5 +57,20 @@
     height: 26px;
     padding: 1px 16px;
     color: #fff;
+  }
+
+  .stats-list {
+    list-style: none;
+    margin-top: 10px;
+    height: 54px;
+    margin-left: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font: 14px 'Overpass', sans-serif;
+    font-weight: 400;
+    &--item {
+
+    }
   }
 }

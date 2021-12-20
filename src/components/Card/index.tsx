@@ -18,20 +18,24 @@ function Card({pokemon}: CardPorps) {
         <p className="name">{pokemon?.name}</p>
       </div>
 
-      <img src={pokemonImgSrc!} alt={pokemon?.name} />
+      <div className="data-wrapper">
+        <div className="image-box">
+          <img src={pokemonImgSrc!} alt={pokemon?.name} />
+        </div>
+        <div className="stats-box">
+          <div className="types">
+            {pokemon?.types.map(t => {
+              return <p className="type-tag" key={t.slot}>{t.type.name}</p>
+            })}
+          </div>
 
-      <div className="types">
-        {pokemon?.types.map(t => {
-          return <p className="type-tag" key={t.slot}>{t.type.name}</p>
-        })}
+          <ul className="stats-list">
+            <li className="stats-list--item">height: {pokemon.height}</li>
+            <li className="stats-list--item">weight: {pokemon.weight}</li>
+            <li className="stats-list--item">exp. base: {pokemon.base_experience}</li>
+          </ul>
+        </div>
       </div>
-
-      <div>
-        <p>height: {pokemon.height}</p>
-        <p>weight: {pokemon.weight}</p>
-        <p>exp. base: {pokemon.base_experience}</p>
-      </div>
-
     </div>
   )
 }

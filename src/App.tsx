@@ -9,7 +9,7 @@ export function App() {
 
   useEffect(() => {
     const fetchPokemon = async () => {
-      const result = await api.getPokemonById(8)
+      const result = await api.getPokemonById(2)
  
       setPokemon(result)
     }
