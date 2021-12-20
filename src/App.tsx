@@ -1,25 +1,30 @@
 import Card from './components/Card';
-import { PokemonClient, Pokemon } from 'pokenode-ts'
+import { PokemonClient,NamedAPIResource, APIResource } from 'pokenode-ts'
 import { useEffect, useState } from 'react';
 
 const api = new PokemonClient({cacheOptions: { maxAge: 500000, exclude: { query: true } }});
 
 export function App() {
-  const [pokemon, setPokemon] = useState<Pokemon>();
+  const [pokemonList, setPokemonList] = useState<NamedAPIResource[] | any[]>();
 
   useEffect(() => {
-    const fetchPokemon = async () => {
-      const result = await api.getPokemonById(2)
- 
-      setPokemon(result)
+    const fetchPokemonList = async () => {
+      const pokemonListResource = await api.listPokemons()
+      setPokemonList(pokemonListResource.results)
     }
 
-    fetchPokemon();
+    fetchPokemonList();
   }, [])
 
   return (
     <div>
-      {!!pokemon && (<Card pokemon={pokemon!} />) }
+      {pokemonList?.map(pokemon => (
+        <Card
+          key={pokemon.name}
+          name={pokemon.name}
+          url={pokemon.url}
+        />
+      ))}
     </div>
   )
 }

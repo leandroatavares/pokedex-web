@@ -1,15 +1,29 @@
-import { Pokemon } from "pokenode-ts";
+import { Pokemon, PokemonClient } from "pokenode-ts";
+import { useEffect, useState } from "react";
 
 import './styles.scss'
 
+const api = new PokemonClient({cacheOptions: { maxAge: 500000, exclude: { query: true } }});
+
 type CardPorps = {
-  pokemon: Pokemon
+  name: string;
+  url: string;
 }
 
-function Card({pokemon}: CardPorps) {
-  console.log(pokemon)
- 
-  const pokemonImgSrc = pokemon.sprites.other.dream_world.front_default;
+function Card({name, url}: CardPorps) {
+
+  const [pokemon, setPokemon] = useState<Pokemon>();
+
+  useEffect(() => {
+    const getPokemonData = async () => {
+      const pokemonData = await api.getPokemonByName(name)
+      setPokemon(pokemonData)
+    }
+
+    getPokemonData()
+  }, [])
+
+  const pokemonImgSrc = pokemon?.sprites.other.dream_world.front_default;
 
   return (
     <div id="card">
@@ -30,9 +44,9 @@ function Card({pokemon}: CardPorps) {
           </div>
 
           <ul className="stats-list">
-            <li className="stats-list--item">height: {pokemon.height}</li>
-            <li className="stats-list--item">weight: {pokemon.weight}</li>
-            <li className="stats-list--item">exp. base: {pokemon.base_experience}</li>
+            <li className="stats-list--item">height: {pokemon?.height}</li>
+            <li className="stats-list--item">weight: {pokemon?.weight}</li>
+            <li className="stats-list--item">exp. base: {pokemon?.base_experience}</li>
           </ul>
         </div>
       </div>
