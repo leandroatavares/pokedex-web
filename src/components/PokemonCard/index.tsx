@@ -29,7 +29,7 @@ function PokemonCard({name, url}: CardPorps) {
   return (
     <div className="card">
       <div className="identification">
-        <p className="number">{pokemon?.id}</p>
+        <p className="number">{`${pokemon?.id}`}</p>
         <p className="name">{`${pokemon?.name.charAt(0).toUpperCase().concat(pokemon?.name.substring(1))}`}</p>
       </div>
 

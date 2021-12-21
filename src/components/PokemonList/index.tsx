@@ -11,7 +11,7 @@ function PokemonList() {
 
   useEffect(() => {
     const fetchPokemonList = async () => {
-      const pokemonListResource = await api.listPokemons(0, 30)
+      const pokemonListResource = await api.listPokemons(0, 50)
       setPokemonList(pokemonListResource.results)
     }
 
