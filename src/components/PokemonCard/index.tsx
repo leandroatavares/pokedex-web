@@ -10,7 +10,7 @@ type CardPorps = {
   url: string;
 }
 
-function Card({name, url}: CardPorps) {
+function PokemonCard({name, url}: CardPorps) {
 
   const [pokemon, setPokemon] = useState<Pokemon>();
 
@@ -54,4 +54,4 @@ function Card({name, url}: CardPorps) {
   )
 }
 
-export default Card;
+export default PokemonCard;
