@@ -26,10 +26,10 @@ function PokemonCard({name, url}: CardPorps) {
   const pokemonImgSrc = pokemon?.sprites.other.dream_world.front_default;
 
   return (
-    <div id="card">
+    <div className="card">
       <div className="identification">
         <p className="number">{pokemon?.id}</p>
-        <p className="name">{pokemon?.name}</p>
+        <p className="name">{`${pokemon?.name.charAt(0).toUpperCase().concat(pokemon?.name.substring(1))}`}</p>
       </div>
 
       <div className="data-wrapper">
@@ -44,8 +44,8 @@ function PokemonCard({name, url}: CardPorps) {
           </div>
 
           <ul className="stats-list">
-            <li className="stats-list--item">height: {pokemon?.height}</li>
-            <li className="stats-list--item">weight: {pokemon?.weight}</li>
+            <li className="stats-list--item">height: {`${pokemon ? (pokemon.height / 10).toString().concat('m') : ''}`}</li>
+            <li className="stats-list--item">weight: {`${pokemon ? (pokemon.weight / 10).toString().concat('kg') : ''}`}</li>
             <li className="stats-list--item">exp. base: {pokemon?.base_experience}</li>
           </ul>
         </div>

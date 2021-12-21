@@ -1,6 +1,8 @@
 import PokemonCard from '../PokemonCard';
-import { PokemonClient, NamedAPIResource } from 'pokenode-ts'
+import { PokemonClient, NamedAPIResource } from 'pokenode-ts';
 import { useEffect, useState } from 'react';
+
+import './styles.scss';
 
 const api = new PokemonClient({cacheOptions: { maxAge: 500000, exclude: { query: true } }});
 
@@ -9,7 +11,7 @@ function PokemonList() {
 
   useEffect(() => {
     const fetchPokemonList = async () => {
-      const pokemonListResource = await api.listPokemons()
+      const pokemonListResource = await api.listPokemons(0, 30)
       setPokemonList(pokemonListResource.results)
     }
 
@@ -17,7 +19,7 @@ function PokemonList() {
   }, [])
 
   return (
-    <div>
+    <main>
       {pokemonList?.map(pokemon => (
         <PokemonCard
           key={pokemon.name}
@@ -25,7 +27,7 @@ function PokemonList() {
           url={pokemon.url}
         />
       ))}
-    </div>
+    </main>
   )
 }
 
