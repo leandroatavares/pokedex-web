@@ -1,4 +1,5 @@
 import { Pokemon, PokemonClient } from "pokenode-ts";
+import TypeTag from '../TypeTag';
 import { useEffect, useState } from "react";
 
 import './styles.scss'
@@ -39,7 +40,7 @@ function PokemonCard({name, url}: CardPorps) {
         <div className="stats-box">
           <div className="types">
             {pokemon?.types.map(t => {
-              return <p className="type-tag" key={t.slot}>{t.type.name}</p>
+              return <TypeTag slot={t.slot} type={t.type}/>
             })}
           </div>
 
