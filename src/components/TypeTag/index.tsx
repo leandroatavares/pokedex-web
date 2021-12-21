@@ -2,10 +2,14 @@ import { PokemonType } from "pokenode-ts";
 
 import './styles.scss'
 
-function TypeTag({slot, type}: PokemonType) {
+type TypeTagProps = {
+  typeName: string;
+}
+
+function TypeTag({typeName}: TypeTagProps) {
   
   return (
-    <p className={`type-tag --${type.name}`} key={slot}>{type.name}</p>
+    <p className={`type-tag --${typeName}`}>{typeName}</p>
   )
 }
 

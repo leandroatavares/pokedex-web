@@ -40,7 +40,7 @@ function PokemonCard({name, url}: CardPorps) {
         <div className="stats-box">
           <div className="types">
             {pokemon?.types.map(t => {
-              return <TypeTag slot={t.slot} type={t.type}/>
+              return <TypeTag key={t.slot} typeName={t.type.name}/>
             })}
           </div>
 
